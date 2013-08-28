@@ -1,24 +1,15 @@
-{% extends "layout.html"  %}
+{% extends "layout.html" %}
+{% block title %}Home | {{site.title}}{% endblock %}
 
-{% block title %}{{ page.title }}{% endblock %}
-
-{% block content %}
-
+{% block content %} 
     {% if posts %}
-
         {% for post in posts %}
-
-            <div class="post {% if loop.first%} first {%endif%} {% if loop.last%} last {%endif%}">
-                <h2>{{ post.title }}</h2>
-                {{ post.content }}
-            </div>
-
+            {# in the future {% showpost %} will be available  #}
+            {% include "./post-bit.html" with post %}
         {% endfor %}
-
     {% else %}
-
-        <h2>No posts</h2>
-
-    {% endif %}
-
-{% endblock %}
+            {# in the future {% error "no-posts" %} will be available #}
+        <h2>No posts found</h2>
+        <p>Please try again later.</p>
+    {% endif}
+{% endblock content}
