@@ -1,0 +1,24 @@
+{% extends "layout.html"  %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+
+    {% if posts %}
+
+        {% for post in posts %}
+
+            <div class="post {% if loop.first%} first {%endif%} {% if loop.last%} last {%endif%}">
+                <h2>{{ post.title }}</h2>
+                {{ post.content }}
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <h2>No posts</h2>
+
+    {% endif %}
+
+{% endblock %}
